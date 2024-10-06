@@ -1,0 +1,11 @@
+name: db-postgres
+
+services:
+  pg:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=nlwDataBase
