@@ -2,7 +2,7 @@ import path from "path"
 import fs from 'fs'
 
 export default abstract class HTTP {
-  abstract on(url: string, metodo: string, fn: any): any
+  abstract on(url: string, metodo: 'get' | 'post' | 'put' | 'delete', fn: any): any
   abstract listen(porta: number): void
   protected abstract authMiddleware(...params: any[]): any
 

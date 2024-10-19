@@ -1,6 +1,6 @@
 import { configuracoes } from "../../configuracoes"
 import Pool from 'pg-pool'
-import { IConexao } from "./conexao"
+import { IConexao } from "../../domain/adapters/iConexao"
 
 export class PostgresAdapter implements IConexao {
 
