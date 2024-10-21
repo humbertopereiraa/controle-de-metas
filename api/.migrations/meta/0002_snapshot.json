@@ -1,0 +1,94 @@
+{
+  "id": "f84c7b3a-56b3-4f32-a01e-bad77a352cbd",
+  "prevId": "b419ee55-a73c-4281-b516-21efc9501660",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.metas": {
+      "name": "metas",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "titulo": {
+          "name": "titulo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "frequencia_semanal_desejada": {
+          "name": "frequencia_semanal_desejada",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "criado_em": {
+          "name": "criado_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.metas_concluidas": {
+      "name": "metas_concluidas",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "meta_id": {
+          "name": "meta_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "criado_em": {
+          "name": "criado_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "metas_concluidas_meta_id_metas_id_fk": {
+          "name": "metas_concluidas_meta_id_metas_id_fk",
+          "tableFrom": "metas_concluidas",
+          "tableTo": "metas",
+          "columnsFrom": [
+            "meta_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

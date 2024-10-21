@@ -3,7 +3,10 @@ import { configuracoes } from "./configuracoes"
 
 const iniciarAplicacao = async () => {
   const bancoConectado = await Conexao.testarConexao()
-  if (bancoConectado) Servidor.listen(parseInt(configuracoes.HTTP_PORT))
+  if (bancoConectado) {
+    Servidor.carregarRotas(Servidor)
+    Servidor.listen(parseInt(configuracoes.HTTP_PORT))
+  }
 }
 
 iniciarAplicacao()

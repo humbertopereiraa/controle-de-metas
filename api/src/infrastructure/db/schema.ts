@@ -1,14 +1,14 @@
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core"
 
-export const goals = pgTable('goals', {
+export const metas = pgTable('metas', {
   id: text('id').primaryKey(),
-  title: text('title').notNull(),
-  desiredWeeklyFrequency: integer('desired_weekly_frequency').notNull(),
-  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow()
+  titulo: text('titulo').notNull(),
+  frequenciaSemanalDesejada: integer('frequencia_semanal_desejada').notNull(),
+  criadoEm: timestamp('criado_em', { withTimezone: true }).notNull().defaultNow()
 })
 
-export const goalCompletions = pgTable('goal_completions', {
+export const metasConcluidas = pgTable('metas_concluidas', {
   id: text('id').primaryKey(),
-  goalId: text('goal_id').references(() => goals.id).notNull(),
-  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow()
+  metaId: text('meta_id').references(() => metas.id).notNull(),
+  criadoEm: timestamp('criado_em', { withTimezone: true }).notNull().defaultNow()
 })
