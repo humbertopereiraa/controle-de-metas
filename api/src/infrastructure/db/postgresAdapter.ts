@@ -1,6 +1,7 @@
 import { configuracoes } from "../../configuracoes"
 import Pool from 'pg-pool'
 import { IConexao } from "../../domain/adapters/iConexao"
+import { PoolClient } from "pg"
 
 export class PostgresAdapter implements IConexao {
 
@@ -22,6 +23,10 @@ export class PostgresAdapter implements IConexao {
     }
   }
 
+  async getClient(): Promise<PoolClient> {
+    return this.pool.connect()
+  }
+
   async testarConexao(): Promise<boolean> {
     try {
       const client = await this.pool.connect()
@@ -32,5 +37,10 @@ export class PostgresAdapter implements IConexao {
       console.error('Erro ao conectar com o Banco de dados:', error)
       return false
     }
+  }
+
+  // Finaliza a pool de conexões (útil após testes)
+  async end(): Promise<void> {
+    await this.pool.end()
   }
 }
